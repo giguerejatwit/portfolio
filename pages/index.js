@@ -23,7 +23,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="bg-neutral-800 dark:bg-black ">
+      <main className="bg-neutral-800 dark:bg-black h-screen w-full ">
+        
         <section className="min-h">
           <Navbar darkMode={darkMode} />
 
