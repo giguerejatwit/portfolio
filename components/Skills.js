@@ -13,7 +13,6 @@ import { useState, ReactComponentElement, useRef } from "react";
 import Image from "next/image";
 
 const onHover = { scale: 1.1, transition: { type: "spring", duration: 0.7 } };
-const animation = {};
 const transition = {
   type: "spring",
   damping: 10,
@@ -21,6 +20,19 @@ const transition = {
   restDelta: 0.001,
   delayChildren: 1,
 };
+
+const skills = [
+  { name: "Solidity", Icon: <Solsvg/> },
+  { name: "Python", Icon: <Pysvg/>},
+  { name: "Web3", Icon: <Ethsvg/> },
+  { name: "Java", Icon: <Javasvg/> },
+  { name: "Machine Learning", Icon: <MLsvg/> },
+  { name: "Cryptography", Icon: <Cryptosvg/> },
+  { name: "C", Icon: <Csvg/> },
+  { name: "React", Icon: <Reactsvg/> },
+  { name: "Django", Icon: <Djangosvg/> },
+];
+
 export function Skills() {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: "some" });
@@ -35,165 +47,30 @@ export function Skills() {
         }}
         className="flex justify-evenly h-60 mb-10"
       >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={transition}
-          whileHover={onHover}
-          className="w-1/6 bg-opacity-20 bg-neutral-400 rounded-2xl shadow-lg shadow-neutral-500"
-        >
-          <div className="flex justify-center pt-5">
-            <Solsvg />
-          </div>
-          <div className="h-20">
-            <h2 className="pt-5 text-2xl text-stone-900  text-center">
-              Solidity
-            </h2>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={transition}
-          whileHover={onHover}
-          className="w-1/6 bg-opacity-20 bg-neutral-400 rounded-2xl shadow-lg shadow-neutral-500"
-        >
-          <div className="flex justify-center pt-5">
-            <Pysvg />
-          </div>
-          <div className="h-20">
-            <h2 className="pt-5 text-2xl text-stone-900  text-center">
-              Python
-            </h2>
+        <div className="grid grid-cols-5 gap-10 p-5">
+          {skills.map((skill, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={transition}
+              whileHover={onHover}
+              className="w-100 h-60 bg-opacity-20 bg-neutral-400 rounded-2xl shadow-md flex items-center justify-center p-10 shadow-neutral-500"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              {skill.Icon}
+              <h3 className="mt-5 text-neutral-800 text-xl font-medium">
+                {skill.name}
+              </h3>
+            </motion.div>
+            ))}
           </div>
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={transition}
-          whileHover={onHover}
-          className="w-1/6 bg-opacity-20 bg-neutral-400 rounded-2xl shadow-lg shadow-neutral-500"
-        >
-          <div className="flex justify-center pt-5">
-            <Ethsvg />
-          </div>
-          <div className="h-20">
-            <h2 className="pt-5 text-2xl text-stone-900  text-center">Web3</h2>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={transition}
-          whileHover={onHover}
-          className="w-1/6 bg-opacity-20 bg-neutral-400 rounded-2xl shadow-lg shadow-neutral-500"
-        >
-          <div className="flex justify-center pt-5">
-            <Javasvg />
-          </div>
-          <div className="h-20">
-            <h2 className="pt-5 text-2xl text-stone-900  text-center">Java</h2>
-          </div>
-        </motion.div>
-      </motion.div>
-      <motion.div
-        ref={ref}
-        style={{
-          transform: isInView ? "none" : "translateY(-40px )",
-          opacity: isInView ? 0.8 : 0.0,
-          transition: "all .7s cubic-bezier(0.17, 0.55, 0.55, 1) .7s",
-        }}
-        className="flex justify-evenly h-60 mb-10"
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={transition}
-          whileHover={onHover}
-          className="w-1/6 bg-opacity-20 bg-neutral-400 rounded-2xl shadow-lg shadow-neutral-500"
-        >
-          <div className="flex justify-center pt-5">
-            <Cryptosvg />
-          </div>
-          <div className="h-20">
-            <h2 className="pt-5 text-2xl text-stone-900  text-center">
-              Cryptography
-            </h2>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={transition}
-          whileHover={onHover}
-          className="w-1/6 bg-opacity-20 bg-neutral-400 rounded-2xl shadow-lg shadow-neutral-500"
-        >
-          <div className="flex justify-center pt-5">
-            <MLsvg />
-          </div>
-          <div className="h-20">
-            <h2 className="pt-5 text-2xl text-stone-900  text-center">
-              Machine Learning
-            </h2>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={transition}
-          whileHover={onHover}
-          className="w-1/6 bg-opacity-20 bg-neutral-400 rounded-2xl shadow-lg shadow-neutral-500"
-        >
-          <div className="flex justify-center pt-5">
-            <Csvg />
-          </div>
-          <div className="h-20">
-            <h2 className="pt-5 text-2xl text-stone-900  text-center">C</h2>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={transition}
-          whileHover={onHover}
-          className="w-1/6 bg-opacity-20 bg-neutral-400 rounded-2xl shadow-lg shadow-neutral-500"
-        >
-          <div className="flex justify-center pt-5">
-            <Reactsvg />
-          </div>
-          <div className="h-20">
-            <h2 className="pt-5 text-2xl text-stone-900  text-center">
-              Frontend Development
-            </h2>
-          </div>
-        </motion.div>
-      </motion.div>
-      <motion.div
-        ref={ref}
-        style={{
-          transform: isInView ? "none" : "translateY(-40px)",
-          opacity: isInView ? 0.8 : 0.0,
-          transition: "all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1) .55s",
-        }}
-        className="flex justify-evenly h-60 mb-10"
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={transition}
-          whileHover={onHover}
-          className="w-1/6 bg-opacity-20 bg-neutral-400 rounded-2xl shadow-lg shadow-neutral-500"
-        >
-          <div className="flex justify-center pt-5">
-            <Djangosvg />
-          </div>
-          <div className="h-20">
-            <h2 className="pt-5 text-2xl text-stone-900  text-center">
-              Backend Development
-            </h2>
-          </div>
-        </motion.div>
-      </motion.div>
-    </div>
-  );
-}
+      </div>
+    );
+  }
+  
